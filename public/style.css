@@ -1,0 +1,149 @@
+:root {
+    font-family: inter
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: centre;
+    margin: 0;
+    background: #202329;
+    color: white;
+}
+
+main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative
+}
+
+.answers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro {
+    margin: auto;
+    text-align: center;
+}
+
+.Intro--title{
+    margin: 0;
+    font-size: 50px;
+    line-height: 37px;
+    color: #ffffff;
+    font-family:  karla;
+}
+
+.Intro--desc {
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+    margin-bottom: 25px
+}
+
+.intro > button, .qbutton {
+    font-family: inter;
+    font-weight: 500;
+    font-size: 16px;
+    color: #F5F7FB;
+    background: #c250aa;
+    border-radius: 15px;
+    border: none;
+    padding: 15px 40px
+}
+
+.qbutton {
+    margin-top: 20px;
+    margin-bottom: 10px
+}
+
+
+
+.answers > .incorrectClicked {
+    background: #d26b5f;;
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #ffffff;
+    border: none
+}
+
+.answers > .correctClicked {
+    background: #3eac70;
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #ffffff;
+    border: none
+}
+
+.question {
+    text-align: center;
+    border-bottom: 1px solid #282828;
+    padding-bottom: 15px;
+    padding-top: 5px;
+}
+
+.question:hover {
+    background: #1a1c21;
+}
+
+.answers .btn-disable
+        {
+        color: #ffffff;
+        cursor: not-allowed;
+        pointer-events: none;
+        border: none
+        }
+
+.questions {
+    text-align: center;
+    width: 90%;
+}
+
+.Question-title {
+    font-weight: bold;
+    font-size: 20px;
+    color: #e6eff5
+}
+
+.test {
+    background: black
+}
+
+.answers > button {
+    border: 0.794239px solid #464646;
+    background: rgba(9, 9, 9, 0);
+    border-radius: 7.94239px;
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 18px;
+    color: #61dafb;
+    
+    
+}
+
+.answers > button:hover {
+    background: #61dafb;
+    color: black;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.finalScore {
+    font-size: 16px;
+    color: #f5f5f5;
+    margin-right: 20px;
+    margin-top: 20px
+}
