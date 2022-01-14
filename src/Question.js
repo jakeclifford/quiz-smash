@@ -44,7 +44,6 @@ export default function Question(props) {
                                             value='correct'
                                             id={correctId}
                                             onClick={e => {
-                                                changeClass(correctId, 'correct')
                                                 props.answerQuestion(e, 'correct')
                                             }}>       
                                     {htmlDecode(props.result.correct_answer)}</button>
@@ -60,8 +59,6 @@ export default function Question(props) {
                                 value='incorrect'
                                 id={id}
                                 onClick={e => {
-                                    changeClass(correctId, 'correct')
-                                    changeClass(id, 'incorrect')
                                     props.answerQuestion(e, 'incorrect')
                                 }}>
                             {htmlDecode(answer)}</button>)})

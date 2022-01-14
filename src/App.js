@@ -58,14 +58,26 @@ export default function App(){
         }
         setChecked(true)
     }
+
+    React.useEffect(() => {
+        answeredQuestions === 5 && checkAnswers()
+      });
      
     return (
         <main>
             {introState ? <div className='questions'>
             <Intro startQuiz={startQuiz}/> </div> :
             <div className='questions'>
-                {quizQuestions}
-                {answeredQuestions === 5 ? <div class='score'><h2 className='finalScore' >You have Scored {correctAnswers}/5</h2><button className='qbutton' onClick={newQuestions}>Play Again</button></div> : checked === false ? <button className='qbutton' onClick={checkAnswers}>Check Answers</button> : <button className='qbutton' onClick={newQuestions}>Play Again</button>}
+                {quizQuestions[answeredQuestions]}
+                {answeredQuestions === 5 && 
+                    <>
+                    <div>{quizQuestions}</div>
+                    <div class='score'>
+                        <h2 className='finalScore'>You have Scored {correctAnswers}/5</h2>
+                        <button className='qbutton' onClick={newQuestions}>Play Again</button>
+                    </div>
+                    </>
+                }
             </div>}
         </main>  
         )
