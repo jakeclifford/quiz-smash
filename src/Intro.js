@@ -1,9 +1,10 @@
 import React from 'react'
+import Logo from './quiz.svg'
 
 export default function Intro(props) {
     return (
         <div className='intro'>
-            <h1 className='Intro--title'>Quiz Smash</h1>
+            <img src={Logo} />
             <p className='Intro--desc'>How Smart Are You?</p>
             <button onClick={props.startQuiz}>Start Quiz</button>
         </div>

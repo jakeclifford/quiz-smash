@@ -2,6 +2,7 @@ import React from 'react'
 import Question from './Question'
 import Intro from './Intro'
 import { nanoid } from 'nanoid'
+import { Alert, AlertTitle } from '@mui/material';
 
 export default function App(){
     const [introState, setIntroState] = React.useState(true)
@@ -9,15 +10,16 @@ export default function App(){
     const [correctAnswers, setCorrectAnswers] = React.useState(0)
     const [answeredQuestions, setAnsweredQuestions] = React.useState(0)
     const [checked, setChecked] = React.useState(false)
+    const [lastQuestion, setLastQuestion] = React.useState(false)
     
     React.useEffect(function() {
-       fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+       fetch("https://opentdb.com/api.php?amount=10&type=multiple")
             .then(res => res.json())
             .then(data => setQuestions(data.results))
     }, [])
     
     function newQuestions() {
-        fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+        fetch("https://opentdb.com/api.php?amount=10&type=multiple")
             .then(res => res.json())
             .then(data => setQuestions(data.results))
         setCorrectAnswers(0)
@@ -40,7 +42,12 @@ export default function App(){
     
      function answerQuestion(event, value){
         setAnsweredQuestions(prev => prev + 1)
-        value === 'correct' && setCorrectAnswers(prev => prev + 1)
+        if (value === 'correct') {
+            setCorrectAnswers(prev => prev + 1)
+            setLastQuestion(true)
+        } else {
+            setLastQuestion(false)
+        }
      }
     
     function startQuiz() {
@@ -58,27 +65,25 @@ export default function App(){
         }
         setChecked(true)
     }
-
-    React.useEffect(() => {
-        answeredQuestions === 5 && checkAnswers()
-      });
      
     return (
         <main>
             {introState ? <div className='questions'>
             <Intro startQuiz={startQuiz}/> </div> :
             <div className='questions'>
+                {answeredQuestions < 10 &&<h1 className="question-number">{answeredQuestions + 1}</h1>}
                 {quizQuestions[answeredQuestions]}
-                {answeredQuestions === 5 && 
-                    <>
-                    <div>{quizQuestions}</div>
+                {answeredQuestions === 10 && 
                     <div class='score'>
-                        <h2 className='finalScore'>You have Scored {correctAnswers}/5</h2>
+                        <h2 className='finalScore'>You have Scored {correctAnswers}/10</h2>
                         <button className='qbutton' onClick={newQuestions}>Play Again</button>
                     </div>
-                    </>
                 }
             </div>}
+            <div className="alerts">
+                {lastQuestion === true && answeredQuestions != 0 && <Alert variant="filled" severity="success">Question {answeredQuestions} - Correct Answer!</Alert>}
+                {lastQuestion === false && answeredQuestions != 0 && <Alert variant="filled" severity="error">Question {answeredQuestions} - Incorrect Answer!</Alert>}
+            </div>
         </main>  
         )
 }
