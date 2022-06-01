@@ -11,6 +11,7 @@ export default function App(){
     const [answeredQuestions, setAnsweredQuestions] = React.useState(0)
     const [checked, setChecked] = React.useState(false)
     const [lastQuestion, setLastQuestion] = React.useState(false)
+    const [highScore, setHighScore] = React.useState(0)
     
     React.useEffect(function() {
        fetch("https://opentdb.com/api.php?amount=10&type=multiple")
@@ -65,25 +66,39 @@ export default function App(){
         }
         setChecked(true)
     }
+
+    function finishGame(){
+        if (correctAnswers > highScore) {
+            setHighScore(correctAnswers)
+        }
+        return (
+            <div class='score'>
+                <h2 className='finalScore'>You have Scored {correctAnswers}/10</h2>
+                <button className='qbutton' onClick={newQuestions}>Play Again</button>
+             </div>)
+    }
      
     return (
+        <>
+        <div id="scores">
+            <h3>Score: {correctAnswers}</h3>
+            <h3>High Score: {highScore}</h3>
+        </div>
         <main>
             {introState ? <div className='questions'>
             <Intro startQuiz={startQuiz}/> </div> :
             <div className='questions'>
                 {answeredQuestions < 10 &&<h1 className="question-number">{answeredQuestions + 1}</h1>}
                 {quizQuestions[answeredQuestions]}
-                {answeredQuestions === 10 && 
-                    <div class='score'>
-                        <h2 className='finalScore'>You have Scored {correctAnswers}/10</h2>
-                        <button className='qbutton' onClick={newQuestions}>Play Again</button>
-                    </div>
+                {answeredQuestions === 10 &&
+                    finishGame()
                 }
             </div>}
             <div className="alerts">
                 {lastQuestion === true && answeredQuestions != 0 && <Alert variant="filled" severity="success">Question {answeredQuestions} - Correct Answer!</Alert>}
                 {lastQuestion === false && answeredQuestions != 0 && <Alert variant="filled" severity="error">Question {answeredQuestions} - Incorrect Answer!</Alert>}
             </div>
-        </main>  
+        </main>
+        </>  
         )
 }

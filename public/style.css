@@ -16,7 +16,7 @@ body {
 }
 
 main {
-    height: 100vh;
+    height: 75vh;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -157,4 +157,10 @@ main {
 .alerts {
     position: absolute;
     bottom: 0
+}
+
+#scores {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px
 }
