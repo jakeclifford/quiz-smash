@@ -26,6 +26,7 @@ main {
 
 .answers {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -37,14 +38,14 @@ main {
 
 .Intro--title{
     margin: 0;
-    font-size: 50px;
+    font-size: 1rem;
     line-height: 37px;
     color: #ffffff;
     font-family:  karla;
 }
 
 .Intro--desc {
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 19px;
     color: #ffffff;
     margin-bottom: 25px
@@ -53,7 +54,7 @@ main {
 .intro > button, .qbutton {
     font-family: inter;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1rem;
     color: #F5F7FB;
     background: #26b6d3;
     border-radius: 15px;
@@ -110,8 +111,8 @@ main {
 
 .Question-title {
     font-weight: bold;
-    font-size: 20px;
-    color: #e6eff5
+    font-size: 1.3rem;
+    color: #e6eff5;
 }
 
 .test {
@@ -124,7 +125,7 @@ main {
     border-radius: 7.94239px;
     margin: 0 5px;
     padding: 5px 10px;
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #dddddd;
     
     
