@@ -123,7 +123,7 @@ main {
     border: 0.794239px solid #464646;
     background: rgba(9, 9, 9, 0);
     border-radius: 7.94239px;
-    margin: 0 5px;
+    margin: 5px 5px;
     padding: 5px 10px;
     font-size: 1.2rem;
     color: #dddddd;
@@ -168,7 +168,7 @@ main {
 
 @media only screen and (max-width: 600px) {
     .answers > button:hover {
-        background: #202329;
+        background: rgba(9, 9, 9, 0);
         color: white;
     }
 }
